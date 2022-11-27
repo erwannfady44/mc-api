@@ -16,7 +16,14 @@ public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idGrade;
-    private Integer level;
+    @Column(unique=true)
+    private String name;
     @ManyToMany(mappedBy = "grades")
     Set<Player> players;
+    @ManyToMany()
+    @JoinTable(
+            name = "grade_permission",
+            joinColumns = @JoinColumn(name = "idGrade"),
+            inverseJoinColumns = @JoinColumn(name = "idPermission"))
+    Set<Permission> permissions;
 }

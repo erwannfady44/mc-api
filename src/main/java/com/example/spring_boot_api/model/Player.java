@@ -23,6 +23,7 @@ public class Player {
             joinColumns = @JoinColumn(name = "idPlayer"),
             inverseJoinColumns = @JoinColumn(name = "idGrade"))
     Set<Grade> grades;
+    @Column(unique=true)
     private String pseudo;
     private String password;
 }
